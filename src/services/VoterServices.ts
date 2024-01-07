@@ -52,6 +52,22 @@ export default new class VoterService {
         }
     }
 
+    async getCountVoter(paslonId: number): Promise<object | string> {
+        try {
+            const response = await this.VoterRepository.count({
+                where: { paslon: { id: paslonId } }, // Gunakan id paslon untuk mencari
+                relations: ["user", "paslon"],
+            });
+
+            return {
+                message: "success getting a Vote",
+                data: response,
+            };
+        } catch (error) {
+            return "message: something error while getting a Vote";
+        }
+    }
+
     async create(reqBody: any): Promise<object> {
         try {
             const voter = await this.VoterRepository.save(reqBody);

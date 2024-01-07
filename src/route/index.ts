@@ -35,6 +35,7 @@ router.delete('/partai/:id', AuthMiddleware.Auth, PartaiController.delete)
 
 router.get('/voter/:id', VoterController.getOne)
 router.get('/voters', VoterController.getAll)
+router.get("/votercount/:id", VoterController.getCountVoter);
 router.post('/voter', AuthMiddleware.Auth, VoterController.create)
 router.put('/voter/:id', AuthMiddleware.Auth, VoterController.update)
 router.delete('/voter/:id', AuthMiddleware.Auth, VoterController.delete)

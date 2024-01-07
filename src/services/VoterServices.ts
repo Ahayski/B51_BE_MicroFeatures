@@ -1,9 +1,11 @@
-import { Repository } from "typeorm";
+import { Repository, getRepository } from "typeorm";
 import { Voter } from "../entity/Voter";
 import { AppDataSource } from "../data-source";
+import { Paslon } from "../entity/Paslon";
 
 export default new class VoterService {
     private readonly VoterRepository: Repository<Voter> = AppDataSource.getRepository(Voter)
+    private readonly PaslonRepository: Repository<Paslon> = AppDataSource.getRepository(Paslon)
     async getOne(id: number): Promise<object | string> {
         try {
             const response = await this.VoterRepository.findOne({
@@ -49,6 +51,22 @@ export default new class VoterService {
             };
         } catch (error) {
             return "message: something error while getting all Vote";
+        }
+    }
+
+    async getCountVoter(paslonId: number): Promise<object | string> {
+        try {
+            const response = await this.VoterRepository.count({
+                where: { paslon: { id: paslonId } }, // Gunakan id paslon untuk mencari
+                relations: ["user", "paslon"],
+            });
+
+            return {
+                message: "success getting a Vote",
+                data: response,
+            };
+        } catch (error) {
+            return "message: something error while getting a Vote";
         }
     }
 

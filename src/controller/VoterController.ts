@@ -28,6 +28,17 @@ export default new class VoterControllers {
         }
     }
 
+    async getCountVoter(req: Request, res: Response) {
+        try {
+            const paslonId = parseInt(req.params.id, 10);
+            const jumlahVote = await VoterServices.getCountVoter(paslonId);
+
+            res.status(200).json({ jumlahVote });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
     async create(req: Request, res: Response) {
         try {
             const loginSession = res.locals.loginSession

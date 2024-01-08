@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToOne, OneToMany } from "typ
 import { Article } from "./Article"
 import { Voter } from "./Voter"
 
-export type UserRoleType = "admin" | "editor" | "ghost"
+export type UserRoleType = "Super Admin" | "Admin" | "User"
 @Entity({ name: "user" })
 export class User {
 
@@ -26,8 +26,8 @@ export class User {
 
     @Column({
         type: "enum",
-        enum: ["admin", "editor", "ghost"],
-        default: "ghost",
+        enum: ["Super Admin", "Admin", "User"],
+        default: "User",
     })
     role: UserRoleType
 

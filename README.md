@@ -19,8 +19,8 @@ How to use authorization
 1. Register Auth<br>
 * Url : http://localhost:5000/api/v1/auth/register
 * Method : `POST`
-* Untuk role nilai default jika tidak diisi adalah ghost, jika ingin menjadi admin or editor , sebaiknya pada fe 
-* pengaplikasian nya adalah untuk tidak menambahkan form role
+* Untuk role nilai default jika tidak diisi adalah User, jika ingin menjadi admin or Super Admin, sebaiknya diisi 
+* sesuai data nya , sebaiknya pada fe pengaplikasian nya adalah untuk tidak menambahkan form role
 * Json body example :
 
         {
@@ -29,7 +29,7 @@ How to use authorization
             "gender" : "Laki-Laki",
             "userName" : "Eslamet",
             "password" : "akusukapisang",
-            "Role"     : "admin"
+            "Role"     : "Super Admin"
         }
 
 2. Login<br>

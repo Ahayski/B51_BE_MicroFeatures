@@ -5,7 +5,8 @@ export const registerSchema = Joi.object({
     address: Joi.string().required(),
     gender: Joi.string().required(),
     userName: Joi.string().required(),
-    password: Joi.string().required()
+    password: Joi.string().required(),
+    role: Joi.string().max(100).allow(null)
 })
 
 export const loginSchema = Joi.object({

@@ -19,7 +19,8 @@ export default new class AuthService {
                 address: reqBody.address,
                 gender: reqBody.gender,
                 userName: reqBody.userName,
-                password: hashPassword
+                password: hashPassword,
+                role: reqBody.role || "ghost"
             })
             const resRegist = await this.AuthRepository.save(obj)
 
